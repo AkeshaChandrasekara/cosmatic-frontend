@@ -34,41 +34,36 @@ export default function HomePage() {
             <div className="min-h-screen w-full flex flex-col">
                 <Header />
 
-                {loadingSections ? (
-                    <div className="flex-1 flex items-center justify-center bg-white">
-                        <FadeLoader color="#006400" loading={loadingSections} size={15} />
-                    </div>
-                ) : (
-                    <main className="flex-1">
-                        <Routes>
-                            <Route path="/" element={<HomeView />} />
-                            <Route path="/products" element={<ProductPage />} />
-                            <Route path="/about" element={<AboutPage />} />
-                            <Route path="/login" element={<LoginPage />} />
-                            <Route path="/signup" element={<SignupPage />} />
-                            <Route path="/cart" element={<CartPage />} />
-                            <Route path="/contact" element={<ContactPage />} />
-                        </Routes>
+                <div className="flex-1 flex flex-col mt-[90px]">
+                    {loadingSections ? (
+                        <div className="flex-1 flex items-center justify-center bg-white">
+                            <FadeLoader color="#006400" loading={loadingSections} size={15} />
+                        </div>
+                    ) : (
+                        <main className="flex-1">
+                            <Routes>
+                                <Route path="/" element={<HomeView />} />
+                                <Route path="/products" element={<ProductPage />} />
+                                <Route path="/about" element={<AboutPage />} />
+                                <Route path="/login" element={<LoginPage />} />
+                                <Route path="/signup" element={<SignupPage />} />
+                                <Route path="/cart" element={<CartPage />} />
+                                <Route path="/contact" element={<ContactPage />} />
+                            </Routes>
 
-                    </main>
-                )}
+                        </main>
+                    )}
 
-                {showScrollButton && (
-                    <button
-                        onClick={scrollToTop}
-                        className="fixed bottom-6 right-6 z-50 cursor-pointer bg-green-800 hover:bg-green-900 text-white p-3 rounded-[30%] shadow-lg transition"
-                    >
-                        <FaArrowUp />
-                    </button>
-                )}
+                    {showScrollButton && (
+                        <button
+                            onClick={scrollToTop}
+                            className="fixed bottom-6 right-6 z-50 cursor-pointer bg-green-800 hover:bg-green-900 text-white p-3 rounded-[30%] shadow-lg transition"
+                        >
+                            <FaArrowUp />
+                        </button>
+                    )}
+                </div>
             </div>
-
-
-
-
-
-
-
 
 
         </>

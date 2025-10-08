@@ -4,7 +4,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 export default function Banner() {
     const heroBanners = [
         {
-            image: "/banner1.jpg",
+            image: "/banner1.png",
             title: "PURE. NATURAL. BEAUTY.",
             subtitle: "Glow with skincare powered by nature.",
         },
@@ -39,7 +39,7 @@ export default function Banner() {
     };
 
     return (
-        <section className="relative w-full h-[70vh] overflow-hidden">
+        <section className="relative w-full h-[60vh] md:h-[80vh]  overflow-hidden ">
 
             <img
                 src={heroBanners[index].image}
@@ -56,7 +56,7 @@ export default function Banner() {
                     {heroBanners[index].subtitle}
                 </p>
                 <button
-                    className="px-8 py-3 bg-white text-gray-900 hover:bg-gray-100 font-medium text-base shadow-md hover:shadow-lg transition-all duration-300"
+                    className="px-8 py-3 bg-white rounded-full text-gray-900 hover:bg-gray-100 font-medium text-base shadow-md hover:shadow-lg transition-all duration-300"
                     onClick={() => (window.location.href = "/product")}
                 >
                     Shop Now
@@ -82,7 +82,7 @@ export default function Banner() {
                 {heroBanners.map((_, i) => (
                     <div
                         key={i}
-                        className={`w-2.5 h-2.5 transition-all duration-300 ${i === index ? "bg-white" : "bg-white/50"
+                        className={`w-2.5 h-2.5 transition-all rounded-full duration-300 ${i === index ? "bg-white" : "bg-white/50"
                             }`}
                     />
                 ))}

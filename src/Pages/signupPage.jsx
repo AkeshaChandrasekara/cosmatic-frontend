@@ -51,14 +51,14 @@ export default function SignupPage() {
         <>
             <div className="w-full min-h-screen flex flex-col md:flex-row bg-green-50">
 
-                <div className="hidden md:flex w-1/2 flex-col justify-center items-center p-5 bg-green-200">
+                <div className="hidden md:flex w-1/2 flex-col justify-center items-center p-5 bg-green-900">
                     <div className="flex w-full h-[300px] flex-col justify-center items-center gap-4 ">
                         <img
                             src="logo.png"
                             alt="Thilakshana Logo"
                             className="w-48 h-48 md:w-120 md:h-30 object-cover hover:scale-105 transition-transform duration-300"
                         />
-                        <span className="text-center text-gray-700 text-[16px] leading-relaxed lg:w-[480px]">
+                        <span className="text-center text-white text-[16px] leading-relaxed lg:w-[480px]">
                             Join us and embrace pure organic cosmetics made with nature’s best herbs and oils.
                             Your journey to natural beauty starts here 🌿
                         </span>
@@ -66,7 +66,7 @@ export default function SignupPage() {
                 </div>
 
 
-                <div className="w-full md:w-1/2 flex justify-center items-center p-5 bg-green-200 min-h-screen">
+                <div className="w-full md:w-1/2 flex justify-center items-center p-5 bg-green-900 min-h-screen">
                     <div className="w-full max-w-md bg-white shadow-lg p-10 flex flex-col gap-2">
                         <h1 className="text-3xl font-bold text-green-700 flex items-center gap-2 justify-center">
                             <FaLeaf /> Sign Up

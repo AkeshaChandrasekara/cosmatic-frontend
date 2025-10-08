@@ -115,10 +115,10 @@ export default function AdminTable() {
             )}
 
             <div className="mx-auto max-w-8xl">
-                <div className="border border-secondary/10 bg-green-50 shadow-sm">
-                    <div className="flex items-center justify-between gap-4 bg-green-900 border-b border-secondary/10 px-6 py-4">
-                        <h1 className="text-lg font-semibold text-white">Admins</h1>
-                        <span className="px-3 py-1 text-xs font-medium text-white">{filteredAdmins.length} admins</span>
+                <div className="border border-secondary/10 bg-white shadow-sm">
+                    <div className="flex items-center justify-between gap-4 bg-white border-b border-secondary/10 px-6 py-4">
+                        <h1 className="text-lg font-semibold text-green-900">Admins</h1>
+                        <span className="px-3 py-1 text-xs font-medium text-green-900 bg-green-100 rounded-2xl">{filteredAdmins.length} admins</span>
                     </div>
 
                     <div className="p-4">

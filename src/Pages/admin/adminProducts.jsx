@@ -118,13 +118,13 @@ export default function AdminProducts() {
 
                 <div className="mx-auto max-w-8xl">
 
-                    <div className="border border-secondary/10 bg-green-50 shadow-sm">
+                    <div className="border border-secondary/10 bg-white shadow-sm">
 
-                        <div className="flex items-center justify-between gap-4 border-b bg-green-900 border-secondary/10 px-6 py-4">
-                            <h1 className="text-lg font-semibold text-white">
+                        <div className="flex items-center justify-between gap-4 border-b bg-white border-secondary/10 px-6 py-4">
+                            <h1 className="text-lg font-semibold text-gray-900">
                                 Products
                             </h1>
-                            <span className="px-3 py-1 text-xs font-medium text-white">
+                            <span className="px-3 py-1 text-xs font-medium text-green-900 bg-green-100 rounded-2xl">
                                 {filteredProducts.length} items
                             </span>
                         </div>

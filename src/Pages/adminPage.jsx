@@ -32,7 +32,7 @@ export default function AdminPage() {
             <div className="md:hidden fixed top-4 left-4 z-50">
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="p-3 bg-green-700 text-white rounded-xl shadow-md hover:bg-green-800 transition duration-300"
+                    className="p-3 bg-green-700 text-white rounded-xl shadow-md hover:bg-green-800 transition duration-300 cursor-pointer"
                 >
                     {isOpen ? <FaTimes size={18} /> : <FaBars size={18} />}
                 </button>
@@ -40,34 +40,32 @@ export default function AdminPage() {
 
 
             <aside
-                className={`fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-green-50 to-white shadow-xl p-6 z-40 border-r-2 border-green-200 transform transition-transform duration-300
-    ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:w-1/5 flex flex-col`}
+                className={`fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-gray-900 to-gray-800 shadow-lg p-6 z-40 border-r border-gray-700 transform transition-transform duration-300
+  ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:w-1/5 flex flex-col`}
             >
 
-                <header className="flex justify-center bg-green-900 items-center w-full h-[100px] md:h-[100px] cursor-pointer border-2 border-green-900">
+                <header className="flex justify-center items-center w-full h-[100px] md:h-[100px] cursor-pointer  ">
                     <Link to="/admin">
-                        <img
-                            src="logo.png"
+                        <img src="logo.png"
                             alt="Organic Cosmetics Logo"
-                            className="h-[100px] w-[250px] object-cover cursor-pointer hover:scale-105 transition-transform duration-300 "
-                        />
-                    </Link>
-                </header>
+                            className="h-[100px] w-[250px] object-cover cursor-pointer hover:scale-105 transition-transform duration-300 " />
 
-                <hr className="border-t border-green-200 my-4 w-full mx-auto" />
+                    </Link>
+
+                </header>
 
 
                 <main className="flex flex-col flex-1">
-                    <nav className="flex flex-col gap-2 mt-4">
+                    <nav className="flex flex-col gap-2 mt-2">
                         {menuItems.map((item) => {
                             const active = location.pathname === item.path;
                             return (
                                 <Link
                                     key={item.name}
                                     to={item.path}
-                                    className={`flex items-center gap-3 p-3 font-medium transition-all duration-300 ${active
-                                        ? "bg-green-900 text-white shadow-md"
-                                        : "text-green-700 hover:bg-green-100 hover:text-green-800"
+                                    className={`flex items-center gap-3 p-3 rounded-lg font-medium transition-all duration-300 ${active
+                                        ? "bg-gray-700 text-white shadow-md"
+                                        : "text-gray-300 hover:bg-gray-700/60 hover:text-white"
                                         }`}
                                     onClick={() => setIsOpen(false)}
                                 >
@@ -77,6 +75,7 @@ export default function AdminPage() {
                         })}
                     </nav>
 
+
                     <button
                         onClick={() => {
                             localStorage.removeItem("authToken");
@@ -84,12 +83,13 @@ export default function AdminPage() {
                             setIsOpen(false);
                             navigate("/login");
                         }}
-                        className="flex items-center gap-3 p-3 mt-auto cursor-pointer bg-red-100 text-red-800 hover:bg-red-200 hover:text-red-900 transition duration-300 justify-center font-medium w-full"
+                        className="flex items-center gap-3 p-3 mt-auto cursor-pointer bg-gray-700 text-white hover:bg-red-600 hover:text-white transition duration-300 justify-center font-medium w-full rounded-lg"
                     >
                         <FaSignOutAlt /> Logout
                     </button>
                 </main>
             </aside>
+
 
 
 

@@ -9,8 +9,8 @@ export default function AdminView() {
     const [customerCount, setCustomerCount] = useState(0);
     const [orderCount, setOrderCount] = useState(0);
     const [revenue, setRevenue] = useState(0);
-    // const [adminName, setAdminName] = useState("");
-    // const [adminImage, setAdminImage] = useState("");
+    const [adminName, setAdminName] = useState("");
+    const [adminImage, setAdminImage] = useState("");
 
     const stats = [
         { icon: FaUsers, title: "Users", value: customerCount, color: "green" },
@@ -40,8 +40,8 @@ export default function AdminView() {
                 const currentAdmin = Array.isArray(res.data) ? res.data[0] : res.data;
 
                 if (currentAdmin) {
-                    // setAdminName(`${currentAdmin.firstName} ${currentAdmin.lastName}`);
-                    // setAdminImage(currentAdmin.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
+                    setAdminName(`${currentAdmin.firstName} ${currentAdmin.lastName}`);
+                    setAdminImage(currentAdmin.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
                 }
             } catch (err) {
                 console.error("Failed to fetch admin info", err);
@@ -88,9 +88,11 @@ export default function AdminView() {
     };
 
     return (
-        <div className="p-6 min-h-screen bg-white border-4 border-green-100">
+        <div className="p-6 min-h-screen bg-white border border-gray-400">
 
-            {/* <div className="flex items-center gap-4 mb-6 p-4 bg-green-50 rounded-xl shadow-md">
+            <h1 className="text-3xl font-semibold text-green-900 mb-4">Dashboard</h1>
+
+            <div className="flex items-center gap-4 mb-6 p-4 bg-green-100 rounded-xl shadow-md">
                 <img
                     src={adminImage || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
                     alt={adminName || "Admin"}
@@ -100,9 +102,9 @@ export default function AdminView() {
                     <h2 className="text-xl font-semibold text-green-900">{adminName || "Administrator"}</h2>
                     <p className="text-green-700 text-sm">Administrator</p>
                 </div>
-            </div> */}
+            </div>
 
-            <h1 className="text-3xl font-semibold text-green-900 mb-4">Dashboard</h1>
+
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
                 {stats.map((stat, idx) => {
