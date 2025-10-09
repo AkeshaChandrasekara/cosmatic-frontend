@@ -28,7 +28,7 @@ export default function HomeShowcase() {
                     },
                 ].map((item, i) => (
                     <div key={i} className="flex flex-col items-center hover:scale-105 transition-transform duration-300">
-                        <div className="w-15 h-15 flex items-center justify-center bg-gray-50 rounded-full shadow-sm mb-2">
+                        <div className="w-15 h-15 flex items-center justify-center bg-green-100 rounded-full shadow-sm mb-2">
                             <img src={item.icon} alt={item.label} className="w-8 h-8 object-contain" />
                         </div>
                         <p className="text-sm font-light tracking-wide text-gray-800">{item.label}</p>

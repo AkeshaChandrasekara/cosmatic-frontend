@@ -17,7 +17,7 @@ export default function Header() {
     ];
 
     return (
-        <header className="fixed top-0 w-full py-1 bg-white shadow-sm z-50 ">
+        <header className="fixed top-0 w-full py-1 bg-green-900 shadow-sm z-50 ">
             <div className="w-full mx-auto flex items-center justify-between px-6 md:px-12 py-4">
 
                 {/* --- Logo --- */}
@@ -32,14 +32,14 @@ export default function Header() {
 
 
                 {/* --- Navigation & Icons --- */}
-                <nav className="hidden md:flex flex-1 items-center justify-between text-green-800 font-sans">
+                <nav className="hidden md:flex flex-1 items-center justify-between text-white font-sans">
                     {/* --- Navigation (centered) --- */}
                     <div className="flex-1 flex justify-center space-x-2 ml-35">
                         {sections.map((section) => (
                             <Link
                                 key={section.name}
                                 to={section.path}
-                                className="px-3 py-2 text-sm font-semibold whitespace-nowrap uppercase hover:text-green-600 transition-colors duration-200"
+                                className="px-3 py-2 text-sm font-semibold whitespace-nowrap uppercase hover:text-green-200 transition-colors duration-200"
                             >
                                 {section.name.charAt(0).toUpperCase() + section.name.slice(1)}
                             </Link>
@@ -53,10 +53,10 @@ export default function Header() {
                         </div>
 
                         <div className="flex items-center space-x-4">
-                            <Link to="/login" className="hover:text-green-900 transition-colors duration-200">
+                            <Link to="/login" className="hover:text-white transition-colors duration-200">
                                 <LuUserRound size={20} />
                             </Link>
-                            <Link to="/cart" className="relative hover:text-green-900 transition-colors duration-200">
+                            <Link to="/cart" className="relative hover:text-white transition-colors duration-200">
                                 <BsCart2 size={20} />
                                 <span className="absolute -top-2 -right-2 bg-green-600 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
                                     3

@@ -9,7 +9,7 @@ import HomeView from "../components/homeView";
 import ProductPage from "./productPage";
 import AboutPage from "./aboutPage";
 import ContactPage from "./contactPage";
-import { FadeLoader } from "react-spinners";
+import { PuffLoader } from "react-spinners";
 
 export default function HomePage() {
     const [loadingSections, setLoadingSections] = useState(true);
@@ -34,10 +34,10 @@ export default function HomePage() {
             <div className="min-h-screen w-full flex flex-col">
                 <Header />
 
-                <div className="flex-1 flex flex-col mt-[90px]">
+                <div className="flex-1 flex flex-col mt-[88px]">
                     {loadingSections ? (
                         <div className="flex-1 flex items-center justify-center bg-white">
-                            <FadeLoader color="#006400" loading={loadingSections} size={15} />
+                            <PuffLoader color="#00a048" loading={loadingSections} size={60} />
                         </div>
                     ) : (
                         <main className="flex-1">
@@ -57,7 +57,7 @@ export default function HomePage() {
                     {showScrollButton && (
                         <button
                             onClick={scrollToTop}
-                            className="fixed bottom-6 right-6 z-50 cursor-pointer bg-green-800 hover:bg-green-900 text-white p-3 rounded-[30%] shadow-lg transition"
+                            className="fixed bottom-3 right-6 z-50 cursor-pointer bg-green-800 hover:bg-green-900 text-white p-3 rounded-full shadow-lg transition"
                         >
                             <FaArrowUp />
                         </button>

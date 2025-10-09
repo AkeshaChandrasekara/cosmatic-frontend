@@ -14,7 +14,7 @@ export default function HomeView() {
     return (
         <div className="bg-white">
             {/* ---- Banner Section ---- */}
-            <section className="bg-green-900">
+            <section className="bg-gray-50">
                 <Banner />
             </section>
 
@@ -61,7 +61,7 @@ export default function HomeView() {
 
 
             {/* ---- Floating Social Icons ---- */}
-            <div className="fixed w-[50px] h-[140px] bg-green-800 bottom-1/2 right-0 flex flex-col items-center justify-around py-3 z-50 shadow-lg">
+            <div className="fixed w-[50px] h-[140px] bg-green-800 bottom-1/4 right-0 flex flex-col items-center justify-around py-3 z-50 shadow-lg">
                 <a
                     href="https://wa.me/"
                     target="_blank"

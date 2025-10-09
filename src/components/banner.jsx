@@ -4,7 +4,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 export default function Banner() {
     const heroBanners = [
         {
-            image: "/banner1.png",
+            image: "/banner3.jpg",
             title: "PURE. NATURAL. BEAUTY.",
             subtitle: "Glow with skincare powered by nature.",
         },
@@ -14,7 +14,7 @@ export default function Banner() {
             subtitle: "Nurture your skin with safe, eco-friendly cosmetics.",
         },
         {
-            image: "/banner3.jpg",
+            image: "/banner1.png",
             title: "ELEGANCE FROM NATURE",
             subtitle: "Sustainable beauty crafted for you.",
         },
@@ -66,13 +66,13 @@ export default function Banner() {
 
             <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 text-white p-3 rounded-full shadow-lg transition"
+                className="absolute left-4 bg-green-900 cursor-pointer top-1/2 transform -translate-y-1/2 z-20 text-white p-3 rounded-full shadow-lg transition"
             >
                 <HiChevronLeft size={26} />
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 text-white p-3 rounded-full shadow-lg transition"
+                className="absolute right-4 bg-green-900 cursor-pointer top-1/2 transform -translate-y-1/2 z-20 text-white p-3 rounded-full shadow-lg transition"
             >
                 <HiChevronRight size={26} />
             </button>
