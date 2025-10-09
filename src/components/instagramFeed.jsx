@@ -17,7 +17,7 @@ const InstagramFeed = () => {
                     href="https://www.instagram.com/naturalcosmeticslk/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-purple-600 hover:text-purple-700 underline transition-colors duration-200"
+                    className="text-green-600 hover:text-green-700 underline transition-colors duration-200"
                 >
                     @NATURALCOSMETICSLK
                 </a> TO GET THE LATEST
@@ -33,7 +33,7 @@ const InstagramFeed = () => {
                             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                         {/* Optional: Add an overlay or icon on hover for engagement */}
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                        <div className="absolute inset-0 cursor-pointer bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
 
                         </div>
                     </div>
