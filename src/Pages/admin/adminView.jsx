@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaUsers, FaChartLine, FaShoppingCart, FaLeaf, FaDollarSign, FaBoxOpen } from "react-icons/fa";
+// Updated and slightly rearranged icons for better fit with the organic theme
+import { FaUsers, FaLeaf, FaShoppingCart, FaDollarSign, FaBoxOpen, FaChartBar, FaSeedling, FaClipboardList } from "react-icons/fa";
 
 export default function AdminView() {
     const navigate = useNavigate();
@@ -12,13 +13,32 @@ export default function AdminView() {
     const [adminName, setAdminName] = useState("");
     const [adminImage, setAdminImage] = useState("");
 
+    // --- Data Definitions (Moved to top for clarity) ---
+
     const stats = [
-        { icon: FaUsers, title: "Users", value: customerCount, color: "green" },
-        { icon: FaShoppingCart, title: "Orders", value: orderCount, color: "yellow" },
-        { icon: FaDollarSign, title: "Revenue", value: `$${revenue}`, color: "teal" },
-        { icon: FaBoxOpen, title: "Products", value: productCount, color: "purple" },
+        { icon: FaUsers, title: "Customers", value: customerCount, color: "emerald", unit: "" },
+        { icon: FaShoppingCart, title: "Orders", value: orderCount, color: "teal", unit: "" },
+        { icon: FaDollarSign, title: "Revenue", value: `$${revenue.toLocaleString()}`, color: "green", unit: "USD" },
+        { icon: FaBoxOpen, title: "Products", value: productCount, color: "lime", unit: "" },
     ];
 
+    const quickLinks = [
+        { title: "Products", icon: FaSeedling, path: "/admin/products", color: "green" }, // Changed icon to FaSeedling
+        { title: "Customers", icon: FaUsers, path: "/admin/customers", color: "purple" },
+        { title: "Orders", icon: FaClipboardList, path: "/admin/orders", color: "teal" }, // Changed icon to FaClipboardList
+        { title: "View Analytics", icon: FaChartBar, path: "/admin/dashboard", color: "emerald" }, // Changed icon to FaChartBar
+    ];
+
+    // Elegant and organic color palette using Tailwind's default colors
+    const colorClasses = {
+        emerald: { bg: "bg-emerald-50", text: "text-emerald-700", icon: "text-emerald-500", border: "border-emerald-300" },
+        teal: { bg: "bg-teal-50", text: "text-teal-700", icon: "text-teal-500", border: "border-teal-300" },
+        green: { bg: "bg-green-50", text: "text-green-700", icon: "text-green-500", border: "border-green-300" },
+        lime: { bg: "bg-lime-50", text: "text-lime-700", icon: "text-lime-500", border: "border-lime-300" },
+        purple: { bg: "bg-purple-50", text: "text-purple-700", icon: "text-purple-500", border: "border-purple-300" },
+    };
+
+    // --- Data Fetching Logic (Kept as-is) ---
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (!token) return;
@@ -33,7 +53,6 @@ export default function AdminView() {
 
         const adminEmail = payload.email;
 
-
         const fetchCurrentAdmin = async () => {
             try {
                 const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users?email=${adminEmail}`);
@@ -47,9 +66,6 @@ export default function AdminView() {
                 console.error("Failed to fetch admin info", err);
             }
         };
-
-        fetchCurrentAdmin();
-
 
         const fetchStats = async () => {
             try {
@@ -70,68 +86,70 @@ export default function AdminView() {
             }
         };
 
+        fetchCurrentAdmin();
         fetchStats();
     }, []);
 
-    const quickLinks = [
-        { title: "Manage Products", icon: FaLeaf, path: "/admin/products", color: "teal" },
-        { title: "Manage Users", icon: FaUsers, path: "/admin/customers", color: "purple" },
-        { title: "Manage Orders", icon: FaShoppingCart, path: "/admin/orders", color: "yellow" },
-        { title: "View Analytics", icon: FaChartLine, path: "/admin/dashboard", color: "green" },
-    ];
-
-    const colorClasses = {
-        green: { bg: "bg-green-100", text: "text-green-700", icon: "text-green-600", title: "text-green-800" },
-        yellow: { bg: "bg-yellow-100", text: "text-yellow-700", icon: "text-yellow-600", title: "text-yellow-800" },
-        teal: { bg: "bg-teal-100", text: "text-teal-700", icon: "text-teal-600", title: "text-teal-800" },
-        purple: { bg: "bg-purple-100", text: "text-purple-700", icon: "text-purple-600", title: "text-purple-800" },
-    };
+    // --- Rendered Component (Tailwind Enhancements) ---
 
     return (
-        <div className="p-6 min-h-screen bg-white border border-gray-400">
+        <div className="p-4 md:p-8 min-h-screen bg-white font-sans">
+            <h1 className="text-2xl font-light text-gray-800 mb-6 border-b pb-2">Admin Dashboard</h1>
 
-            <h1 className="text-3xl font-semibold text-green-900 mb-4">Dashboard</h1>
-
-            <div className="flex items-center gap-4 mb-6 p-4 bg-green-100 rounded-xl shadow-md">
+            {/* Welcome Banner: Clean and User-Friendly */}
+            <div className="flex items-center gap-4 mb-10 p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
                 <img
-                    src={adminImage || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                    src={adminImage}
                     alt={adminName || "Admin"}
-                    className="w-16 h-16 rounded-full object-cover border-2 border-green-400"
+                    className="w-15 h-15 rounded-full object-cover border-4 border-green-300 shadow-md"
                 />
                 <div>
-                    <h2 className="text-xl font-semibold text-green-900">{adminName || "Administrator"}</h2>
-                    <p className="text-green-700 text-sm">Administrator</p>
+
+                    <h2 className="text-lg font-semibold text-green-700">{adminName || "Administrator"}</h2>
+                    <p className="text-gray-500 text-sm mt-1">Ready to manage your organic cosmetics store?</p>
+
                 </div>
             </div>
 
-
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            <h2 className="text-xl font-bold text-gray-700 mb-5 uppercase">Metrics</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                {/* Stats Cards: Elegant and Insightful */}
                 {stats.map((stat, idx) => {
                     const Icon = stat.icon;
                     const classes = colorClasses[stat.color];
                     return (
-                        <div key={idx} className={`${classes.bg} rounded-xl p-6 shadow-md hover:shadow-xl transition flex flex-col items-start`}>
-                            <Icon className={`${classes.icon} text-3xl mb-3`} />
-                            <h3 className={`${classes.title} font-semibold text-lg`}>{stat.title}</h3>
-                            <p className={`${classes.text} mt-1 text-xl font-bold`}>{stat.value}</p>
+                        <div key={idx} className={`bg-white rounded-xl p-6 shadow-md border ${classes.border} hover:shadow-xl transform hover:-translate-y-1 transition duration-300`}>
+                            <div className="flex justify-between items-center">
+                                <h3 className={`${classes.text} font-medium text-sm uppercase tracking-wider`}>{stat.title}</h3>
+                                <div className={`p-2 rounded-full ${classes.bg}`}>
+                                    <Icon className={`${classes.icon} text-xl`} />
+                                </div>
+                            </div>
+                            <p className="mt-3 text-4xl font-bold text-gray-900 leading-none">
+                                {stat.value}
+                            </p>
+                            {stat.unit && <p className="text-sm text-gray-500 mt-1">{stat.unit}</p>}
                         </div>
                     );
                 })}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+            <h2 className="text-xl font-bold text-gray-700 mb-5 uppercase">Quick Actions</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Quick Links: Interactive and Clean */}
                 {quickLinks.map((link, idx) => {
                     const Icon = link.icon;
                     const classes = colorClasses[link.color];
                     return (
                         <div
                             key={idx}
-                            className={`${classes.bg} rounded-xl p-6 shadow-md hover:shadow-lg transition flex items-center gap-4 cursor-pointer`}
+                            className={`bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-lg transition cursor-pointer flex items-center gap-4 hover:border-${link.color}-400 group`}
                             onClick={() => navigate(link.path)}
                         >
-                            <Icon className={`${classes.icon} text-3xl`} />
-                            <span className={`${classes.title} font-semibold`}>{link.title}</span>
+                            <div className={`p-3 rounded-full ${classes.bg}`}>
+                                <Icon className={`${classes.icon} text-2xl group-hover:scale-110 transition`} />
+                            </div>
+                            <span className={`text-lg font-medium text-gray-700 group-hover:${classes.text}`}>{link.title}</span>
                         </div>
                     );
                 })}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaLeaf, FaGoogle, FaFacebookF } from "react-icons/fa";
 import Footer from "../components/footer";
 import toast from "react-hot-toast";
@@ -15,6 +15,11 @@ export default function SignupPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
+    // Scroll to top on page load
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+    }, []);
 
 
     async function Signup(e) {

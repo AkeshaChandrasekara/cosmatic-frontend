@@ -151,7 +151,7 @@ export default function AdminTable() {
                                         <tr key={c._id} className="odd:bg-white even:bg-green-50 hover:bg-green-100 transition-colors">
                                             <td className="px-4 py-3">
                                                 {c.image ? (
-                                                    <img src={c.image} alt={`${c.firstName} ${c.lastName}`} className="w-15 h-15  object-cover" />
+                                                    <img src={c.image} alt={`${c.firstName} ${c.lastName}`} className="w-10 h-10  object-cover" />
                                                 ) : (
                                                     <div className="w-15 h-15  object-cover bg-gray-300 flex items-center justify-center text-gray-600 font-bold">
                                                         {c.firstName?.[0] || "A"}
@@ -159,8 +159,8 @@ export default function AdminTable() {
                                                 )}
                                             </td>
 
-                                            <td className="px-4 py-3 font-medium text-gray-800">{c.firstName} {c.lastName}</td>
-                                            <td className="px-4 py-3 text-gray-700">{c.email}</td>
+                                            <td className="px-4 py-3 text-sm font-medium text-gray-800">{c.firstName} {c.lastName}</td>
+                                            <td className="px-4 py-3 text-sm text-gray-700">{c.email}</td>
                                             <td className="px-4 py-3">
                                                 <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-red-100 text-red-700">{c.role}</span>
                                             </td>
