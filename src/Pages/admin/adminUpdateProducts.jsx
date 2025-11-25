@@ -114,7 +114,6 @@ export default function AdminUpdateProducts() {
             <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
             <div className="relative bg-white w-[92%] lg:w-[65%] max-h-[90vh] overflow-y-auto shadow-xl ">
 
-                {/* Header */}
                 <div className="sticky top-0 bg-white border-b border-gray-200 flex items-center justify-between p-5 z-10">
                     <h2 className="text-lg md:text-xl font-semibold text-green-700">
                         Update Product
@@ -138,7 +137,7 @@ export default function AdminUpdateProducts() {
                                 value={productId}
                                 onChange={(e) => setProductId(e.target.value)}
                                 required
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="e.g., DS-CR-001"
                             />
                         </div>
@@ -150,7 +149,7 @@ export default function AdminUpdateProducts() {
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 required
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="Product name"
                             />
                         </div>
@@ -161,7 +160,7 @@ export default function AdminUpdateProducts() {
                             <input
                                 value={altNames}
                                 onChange={(e) => setAltNames(e.target.value)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="Comma separated names"
                             />
                         </div>
@@ -172,12 +171,12 @@ export default function AdminUpdateProducts() {
                             <textarea
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                className="w-full min-h-[120px] border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full min-h-[120px] border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="Write a short description..."
                             />
                         </div>
 
-                        {/* Current Images */}
+                        
                         <div className="md:col-span-2">
                             <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Current Images
@@ -207,8 +206,7 @@ export default function AdminUpdateProducts() {
                             )}
                         </div>
 
-                        {/* Add New Images */}
-
+                       
                         <div className="md:col-span-2">
                             <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Add New Images
@@ -217,7 +215,7 @@ export default function AdminUpdateProducts() {
                                 type="file"
                                 multiple
                                 onChange={(e) => setNewImages(e.target.files)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                             />
                             {newImages && newImages.length > 0 && (
                                 <div className="mt-3 flex flex-wrap gap-3">
@@ -245,8 +243,6 @@ export default function AdminUpdateProducts() {
                             )}
                         </div>
 
-
-                        {/* Price & Stock */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Price
@@ -255,7 +251,7 @@ export default function AdminUpdateProducts() {
                                 type="number"
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="0"
                             />
                         </div>
@@ -267,7 +263,7 @@ export default function AdminUpdateProducts() {
                                 type="number"
                                 value={labelledPrice}
                                 onChange={(e) => setLabelledPrice(e.target.value)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="0"
                             />
                         </div>
@@ -278,7 +274,7 @@ export default function AdminUpdateProducts() {
                             <select
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                             >
                                 <option value="cream">Cream</option>
                                 <option value="lotion">Lotion</option>
@@ -297,13 +293,12 @@ export default function AdminUpdateProducts() {
                                 type="number"
                                 value={stock}
                                 onChange={(e) => setStock(e.target.value)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="0"
                             />
                         </div>
                     </div>
 
-                    {/* Footer */}
                     <div className="flex justify-end gap-3 pt-6 border-t border-gray-200">
                         <button
                             type="button"

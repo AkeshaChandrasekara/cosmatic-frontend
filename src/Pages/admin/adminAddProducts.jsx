@@ -89,7 +89,7 @@ export default function AdminAddProduct({ isOpen, onClose, refresh }) {
                                 value={productId}
                                 onChange={(e) => setProductId(e.target.value)}
                                 required
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="e.g., DS-CR-001"
                             />
                         </div>
@@ -101,7 +101,7 @@ export default function AdminAddProduct({ isOpen, onClose, refresh }) {
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 required
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="Product name"
                             />
                         </div>
@@ -112,7 +112,7 @@ export default function AdminAddProduct({ isOpen, onClose, refresh }) {
                             <input
                                 value={altNames}
                                 onChange={(e) => setAltNames(e.target.value)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="Comma separated names"
                             />
                         </div>
@@ -123,7 +123,7 @@ export default function AdminAddProduct({ isOpen, onClose, refresh }) {
                             <textarea
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                className="w-full min-h-[120px] border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full min-h-[120px] border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="Write a short description..."
                             />
                         </div>
@@ -135,7 +135,7 @@ export default function AdminAddProduct({ isOpen, onClose, refresh }) {
                                 type="file"
                                 multiple
                                 onChange={(e) => setImages(e.target.files)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                             />
                             {images && images.length > 0 && (
                                 <div className="mt-3 flex flex-wrap gap-3">
@@ -158,7 +158,7 @@ export default function AdminAddProduct({ isOpen, onClose, refresh }) {
                                 type="number"
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="0"
                             />
                         </div>
@@ -170,18 +170,18 @@ export default function AdminAddProduct({ isOpen, onClose, refresh }) {
                                 type="number"
                                 value={labelledPrice}
                                 onChange={(e) => setLabelledPrice(e.target.value)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="0"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1 focus:ring-2 focus:ring-green-500 outline-none">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Category
                             </label>
                             <select
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                             >
                                 <option value="cream">Cream</option>
                                 <option value="lotion">Lotion</option>
@@ -201,7 +201,7 @@ export default function AdminAddProduct({ isOpen, onClose, refresh }) {
                                 type="number"
                                 value={stock}
                                 onChange={(e) => setStock(e.target.value)}
-                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                                className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-gray-900"
                                 placeholder="0"
                             />
                         </div>
