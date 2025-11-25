@@ -43,7 +43,7 @@ export default function HomePage() {
                         <main className="flex-1">
                             <Routes>
                                 <Route path="/" element={<HomeView />} />
-                                <Route path="/products" element={<ProductPage />} />
+                                <Route path="/product" element={<ProductPage />} />
                                 <Route path="/about" element={<AboutPage />} />
                                 <Route path="/login" element={<LoginPage />} />
                                 <Route path="/signup" element={<SignupPage />} />
