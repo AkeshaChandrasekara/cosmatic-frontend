@@ -9,6 +9,7 @@ import HomeView from "../components/homeView";
 import ProductPage from "./productPage";
 import AboutPage from "./aboutPage";
 import ContactPage from "./contactPage";
+import ProductOverview from "./ProductOverview";
 import { PuffLoader } from "react-spinners";
 
 export default function HomePage() {
@@ -49,6 +50,7 @@ export default function HomePage() {
                                 <Route path="/signup" element={<SignupPage />} />
                                 <Route path="/cart" element={<CartPage />} />
                                 <Route path="/contact" element={<ContactPage />} />
+                                 <Route path="/product/:id" element={<ProductOverview />} /> 
                             </Routes>
 
                         </main>
