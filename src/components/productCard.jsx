@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FiHeart, FiEye, FiShoppingCart } from "react-icons/fi";
 
 const ProductCard = ({ product }) => {
-    // Safe access with default values
+   
     if (!product) {
         return (
             <div className="group relative bg-white rounded-xl shadow-sm overflow-hidden flex flex-col h-full border border-gray-200 animate-pulse">
@@ -24,7 +24,6 @@ const ProductCard = ({ product }) => {
         );
     }
 
-    // Safe destructuring with defaults
     const {
         productID = '',
         name = 'Product Name',
@@ -49,10 +48,10 @@ const ProductCard = ({ product }) => {
     };
 
     return (
-        <div className="group relative bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 
-        overflow-hidden flex flex-col h-full border border-green-100 hover:border-green-200">
+        <div className="group relative bg-white rounded-md shadow-sm hover:shadow-md transition-all duration-300 
+        overflow-hidden flex flex-col h-full border border-green-50 hover:border-green-100">
            
-            <div className="relative aspect-square overflow-hidden m-2 rounded-lg bg-gray-50">
+            <div className="relative aspect-square overflow-hidden m-2 rounded-lg bg-white">
                 <img
                     src={images[0] || "/placeholder-image.jpg"}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -72,20 +71,11 @@ const ProductCard = ({ product }) => {
                 </button>
 
                 {isDiscounted && (
-                    <div className="absolute top-2 left-2 bg-gradient-to-r from-green-500 to-green-600 text-white 
-                    w-10 h-10 flex items-center justify-center text-xs font-bold rounded-full shadow-lg z-10 
-                    border border-white/20">
+                    <div className="absolute top-2 left-2 bg-red-600 text-white 
+                    px-2 py-1 flex items-center justify-center text-xs font-bold rounded shadow-lg z-10">
                         {discountPercentage}% OFF
                     </div>
                 )}
-
-                <div
-                    className={`absolute bottom-2 left-2 text-xs font-bold px-2 py-1 rounded-full shadow-sm ${
-                        isInStock ? "bg-green-500 text-white" : "bg-red-500 text-white"
-                    }`}
-                >
-                    {isInStock ? "In Stock" : "Out of Stock"}
-                </div>
             </div>
 
            
@@ -98,7 +88,7 @@ const ProductCard = ({ product }) => {
                     <p className="text-[10px] text-gray-400">ID: {productID}</p>
                 </div>
 
-                <div className="mt-auto mb-3">
+                <div className="mb-3">
                     <div className="flex items-baseline gap-2 mb-1">
                         <span className="text-lg font-bold text-slate-950">
                             Rs {price.toLocaleString('en-IN')}
@@ -116,11 +106,11 @@ const ProductCard = ({ product }) => {
                             Save Rs {(labelledPrice - price).toLocaleString('en-IN')}
                         </p>
                     ) : (
-                        <div className="h-4"></div>
+                        <div className="h-4 mt-3"></div>
                     )}
                 </div>
 
-            
+               
                 <div className="mt-auto pt-3 border-t border-gray-100 grid grid-cols-2 gap-2">
                     <Link
                         to={`/product/${productID}`}
