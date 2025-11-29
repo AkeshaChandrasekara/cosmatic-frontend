@@ -41,6 +41,15 @@ const ProductCard = ({ product }) => {
         : 0;
     const isInStock = stock > 0;
 
+    const isInWishlist = () => {
+        const email = getCurrentUserEmail();
+        if (!email) return false;
+        const wishlist = JSON.parse(localStorage.getItem(`wishlist_${email}`) || '[]');
+        return wishlist.some(item => item.productID === productID);
+    };
+
+    const [wishlisted, setWishlisted] = React.useState(isInWishlist());
+
     const handleAddToCart = () => {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -72,7 +81,41 @@ const ProductCard = ({ product }) => {
     };
 
     const toggleWishlist = () => {
-        console.log("Toggle wishlist:", productID);
+        const token = localStorage.getItem('token');
+        if (!token) {
+            toast.error('Please login to add items to wishlist');
+            navigate('/login');
+            return;
+        }
+
+        const email = getCurrentUserEmail();
+        if (!email) return;
+
+        const wishlist = JSON.parse(localStorage.getItem(`wishlist_${email}`) || '[]');
+        
+        if (wishlisted) {
+            const updatedWishlist = wishlist.filter(item => item.productID !== productID);
+            localStorage.setItem(`wishlist_${email}`, JSON.stringify(updatedWishlist));
+            setWishlisted(false);
+            toast.success('Removed from wishlist');
+        } else {
+            const wishlistItem = {
+                productID,
+                name,
+                price,
+                labelledPrice,
+                images,
+                category: product.category,
+                stock,
+                addedAt: new Date().toISOString()
+            };
+            wishlist.push(wishlistItem);
+            localStorage.setItem(`wishlist_${email}`, JSON.stringify(wishlist));
+            setWishlisted(true);
+            toast.success('Added to wishlist');
+        }
+
+        window.dispatchEvent(new Event('cartUpdated'));
     };
 
     return (
@@ -92,10 +135,13 @@ const ProductCard = ({ product }) => {
             
                 <button
                     onClick={toggleWishlist}
-                    className="absolute top-2 right-2 p-2 rounded-full bg-white text-green-600 
-                    hover:bg-green-50 hover:text-green-700 transition-all duration-300 shadow-sm"
+                    className={`absolute top-2 right-2 p-2 rounded-full transition-all duration-300 shadow-sm ${
+                        wishlisted 
+                            ? 'bg-green-600 text-white hover:bg-green-700' 
+                            : 'bg-white text-green-600 hover:bg-green-50 hover:text-green-700'
+                    }`}
                 >
-                    <FiHeart className="w-4 h-4" />
+                    <FiHeart className={`w-4 h-4 ${wishlisted ? 'fill-current' : ''}`} />
                 </button>
 
                 {isDiscounted && (
