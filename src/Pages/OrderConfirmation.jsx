@@ -144,12 +144,12 @@ const OrderConfirmation = () => {
                                     Continue Shopping
                                 </Link>
                                 <button
-                                    onClick={() => window.print()}
+                                    onClick={() => navigate('/orders')}
                                     className="flex items-center justify-center gap-1 px-4
                                      py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors font-semibold text-md"
                                 >
                                     <FiPackage className="w-4 h-4" />
-                                    Order Details
+                                    View All Orders
                                 </button>
                             </div>
                         </div>

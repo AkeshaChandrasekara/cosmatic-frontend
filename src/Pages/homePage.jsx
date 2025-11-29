@@ -13,6 +13,7 @@ import ProductOverview from "./ProductOverview";
 import CheckoutPage from "./checkoutpage";
 import { PuffLoader } from "react-spinners";
 import OrderConfirmation from './OrderConfirmation';
+import OrdersPage from "./OrdersPage";
 
 export default function HomePage() {
     const [loadingSections, setLoadingSections] = useState(true);
@@ -56,6 +57,7 @@ export default function HomePage() {
                                 
                                  <Route path="/checkout" element={<CheckoutPage />} />
                                  <Route path="/order-confirmation" element={<OrderConfirmation />} />
+                                 <Route path="/orders" element={<OrdersPage />} />
                             </Routes>
 
                         </main>
