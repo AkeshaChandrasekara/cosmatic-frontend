@@ -1,9 +1,11 @@
-// src/components/ProductCard.jsx
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiHeart, FiEye, FiShoppingCart } from "react-icons/fi";
+import { addToCart, getCurrentUserEmail } from '../../utils/cartUtils';
+import toast from 'react-hot-toast';
 
 const ProductCard = ({ product }) => {
+    const navigate = useNavigate();
    
     if (!product) {
         return (
@@ -40,7 +42,33 @@ const ProductCard = ({ product }) => {
     const isInStock = stock > 0;
 
     const handleAddToCart = () => {
-        console.log("Add to cart:", productID);
+        const token = localStorage.getItem('token');
+        if (!token) {
+            toast.error('Please login to add items to cart');
+            navigate('/login');
+            return;
+        }
+
+        try {
+            const productDetails = {
+                name: name,
+                price: price,
+                labelledPrice: labelledPrice,
+                images: images,
+                category: product.category,
+                stock: stock
+            };
+            
+            const success = addToCart(productID, 1, productDetails);
+            
+            if (success) {
+                toast.success('Product added to cart successfully!');
+            } else {
+                toast.error('Failed to add product to cart');
+            }
+        } catch (error) {
+            toast.error('Failed to add product to cart');
+        }
     };
 
     const toggleWishlist = () => {

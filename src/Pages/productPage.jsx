@@ -7,8 +7,7 @@ import {
     FiUser, 
     FiDroplet, 
     FiSun,
-    FiGrid,
-    FiArrowLeft
+    FiGrid
 } from "react-icons/fi";
 
 export default function ProductPage() {
@@ -110,37 +109,16 @@ export default function ProductPage() {
     const categoryStats = getCategoryStats();
 
     const renderCategorySection = (categoryKey) => {
-        const category = categories[categoryKey];
         const categoryProducts = getProductsByCategory(categoryKey);
-        const IconComponent = category.icon;
 
         if (categoryProducts.length === 0) return null;
 
         return (
             <section key={categoryKey} className="mb-12 scroll-mt-20" id={categoryKey}>
-                <div className="text-center mb-8">
-                    <div className="flex items-center justify-center gap-3 mb-3">
-                        <div className={`p-2 rounded-full bg-gray-50 ${category.color}`}>
-                            <IconComponent className="w-5 h-5" />
-                        </div>
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{category.name}</h2>
-                    </div>
-                    <p className="text-gray-600 max-w-2xl mx-auto text-sm">
-                        {category.description}
-                    </p>
-                    <div className="w-20 h-0.5 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mx-auto mt-3"></div>
-                </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {categoryProducts.map((product) => (
                         <ProductCard key={product?.productID} product={product} />
                     ))}
-                </div>
-
-                <div className="text-center mt-8 pt-6 border-t border-gray-100">
-                    <p className="text-gray-500 text-xs">
-                        Showing {categoryProducts.length} premium {category.name.toLowerCase()} products
-                    </p>
                 </div>
             </section>
         );
@@ -151,8 +129,6 @@ export default function ProductPage() {
         
         return (
             <section className="mb-12">
-             
-                
                 {allProducts.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {allProducts.map((product) => (
@@ -171,8 +147,6 @@ export default function ProductPage() {
             </section>
         );
     };
-
-    const IconComponent = categories[activeCategory]?.icon || FiGrid;
 
     return (
         <div className="min-h-screen bg-white">
@@ -233,7 +207,6 @@ export default function ProductPage() {
                 {loadingStatus === "loading" && (
                     <div className="flex flex-col items-center justify-center py-24">
                         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-600 mb-4"></div>
-                       
                     </div>
                 )}
 
@@ -264,79 +237,8 @@ export default function ProductPage() {
                         ) : (
                             <div>
                                 {renderCategorySection(activeCategory)}
-                                
-                                {/* Back to All Products */}
-                                <div className="text-center mt-12 pt-8 border-t border-gray-200">
-                                    <button
-                                        onClick={() => {
-                                            setActiveCategory("all");
-                                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                                        }}
-                                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-300 font-medium text-sm hover:shadow-md"
-                                    >
-                                        <FiArrowLeft className="w-4 h-4" />
-                                        Back to All Products
-                                    </button>
-                                </div>
                             </div>
                         )}
-                    </div>
-                )}
-
-                {/* Show all categories when viewing individual category */}
-                {loadingStatus === "loaded" && activeCategory !== "all" && (
-                    <div className="mt-16 pt-12 border-t border-gray-200">
-                        <div className="text-center mb-8">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Explore More Categories</h3>
-                            <p className="text-gray-600 text-sm">Discover our complete range of organic products</p>
-                        </div>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {Object.keys(categories).map(key => {
-                                if (key === 'all' || key === activeCategory) return null;
-                                const category = categories[key];
-                                const count = categoryStats[key] || 0;
-                                const CategoryIcon = category.icon;
-                                
-                                return (
-                                    <div 
-                                        key={key}
-                                        className="bg-white rounded-xl p-6 border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
-                                        onClick={() => {
-                                            setActiveCategory(key);
-                                            setTimeout(() => {
-                                                document.getElementById(key)?.scrollIntoView({ 
-                                                    behavior: 'smooth',
-                                                    block: 'start'
-                                                });
-                                            }, 100);
-                                        }}
-                                    >
-                                        <div className="flex items-center gap-3 mb-3">
-                                            <div className={`p-2 rounded-full bg-gray-50 group-hover:scale-110 transition-transform duration-300 ${category.color}`}>
-                                                <CategoryIcon className="w-4 h-4" />
-                                            </div>
-                                            <div className="flex-1">
-                                                <h4 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">
-                                                    {category.name}
-                                                </h4>
-                                                <p className="text-gray-500 text-xs mt-1">
-                                                    {count} products available
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <p className="text-gray-600 text-xs leading-relaxed">
-                                            {category.description}
-                                        </p>
-                                        <div className="mt-3 pt-3 border-t border-gray-100">
-                                            <span className="text-green-600 font-semibold text-xs group-hover:underline">
-                                                Explore {category.name} →
-                                            </span>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
                     </div>
                 )}
             </div>
