@@ -4,9 +4,7 @@ import {
     FiShoppingCart, 
     FiTrash2, 
     FiPlus, 
-    FiMinus, 
-    FiArrowLeft,
-    FiCreditCard
+    FiMinus
 } from "react-icons/fi";
 import Footer from '../components/Footer';
 import { 
@@ -14,8 +12,7 @@ import {
     updateCartItemQuantity, 
     removeFromCart, 
     clearCart, 
-    getCartWithProductDetails,
-    getCartSummary 
+    getCartWithProductDetails
 } from '../../utils/cartUtils';
 import toast from 'react-hot-toast';
 
@@ -77,7 +74,6 @@ const CartPage = () => {
         try {
             setUpdating(true);
             updateCartItemQuantity(productID, newQuantity);
-           // toast.success('Quantity updated successfully');
         } catch (error) {
             toast.error('Failed to update quantity');
         } finally {
@@ -172,7 +168,8 @@ const CartPage = () => {
             return;
         }
 
-        toast.success('Proceeding to checkout...');
+        const selectedCartItems = cartItems.filter(item => selectedItems.includes(item.productID));
+        navigate('/checkout', { state: { cartItems: selectedCartItems } });
     };
 
     const getSelectedItemsSummary = () => {
@@ -184,13 +181,13 @@ const CartPage = () => {
         
         return {
             totalItems,
-            totalAmount
+            totalAmount,
+            items: selectedCartItems
         };
     };
 
     const selectedSummary = getSelectedItemsSummary();
     const isCartEmpty = cartItems.length === 0;
-    const allSelected = cartItems.length > 0 && selectedItems.length === cartItems.length;
 
     if (loading) {
         return (
@@ -237,7 +234,7 @@ const CartPage = () => {
                 </div>
 
                 {isCartEmpty ? (
-                    <div className="bg-white rounded-xl border border-gray-200 p-12 text-center">
+                 <div className="bg-white rounded-xl border border-gray-200 p-12 max-w-5xl mx-auto text-center">
                         <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FiShoppingCart className="w-10 h-10 text-gray-400" />
                         </div>
@@ -252,12 +249,7 @@ const CartPage = () => {
                             >
                                 Continue Shopping
                             </button>
-                            <button
-                                onClick={() => navigate('/')}
-                                className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold"
-                            >
-                                Go to Home
-                            </button>
+                            
                         </div>
                     </div>
                 ) : (
@@ -342,7 +334,7 @@ const CartPage = () => {
                         
                         <div className="lg:col-span-1">
                             <div className="bg-white rounded-xl border border-gray-200 p-6 sticky top-6">
-                                <h3 className="text-lg font-bold text-gray-900 mb-4"> Summary</h3>
+                                <h3 className="text-lg font-bold text-gray-900 mb-4">Order Summary</h3>
                                 
                                 <div className="space-y-3 mb-6">
                                     <div className="flex justify-between text-sm">

@@ -151,3 +151,16 @@ export const getCartSummary = () => {
     items: cart
   };
 };
+
+export const getUserOrders = () => {
+    const email = getCurrentUserEmail();
+    if (!email) return [];
+    
+    const userOrders = localStorage.getItem(`orders_${email}`);
+    return userOrders ? JSON.parse(userOrders) : [];
+};
+
+export const getAllOrders = () => {
+    const allOrders = localStorage.getItem('all_orders');
+    return allOrders ? JSON.parse(allOrders) : [];
+};
