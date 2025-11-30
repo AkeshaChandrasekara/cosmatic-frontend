@@ -125,29 +125,23 @@ export default function Header() {
                         <div className="flex items-center space-x-6">
                             <Link to="/orders" className="relative hover:text-white transition-colors duration-200">
                                 <BsClipboardCheck size={20} />
-                                {ordersCount > 0 && (
-                                    <span className="absolute -top-2 -right-2 bg-green-600 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
-                                        {ordersCount}
-                                    </span>
-                                )}
+                                <span className="absolute -top-2 -right-2 bg-white text-green-600 rounded-full text-xs w-4 h-4 flex items-center justify-center font-bold">
+                                    {ordersCount}
+                                </span>
                             </Link>
                             
                             <Link to="/wishlist" className="relative hover:text-white transition-colors duration-200">
                                 <BsHeart size={20} />
-                                {wishlistCount > 0 && (
-                                    <span className="absolute -top-2 -right-2 bg-green-600 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
-                                        {wishlistCount}
-                                    </span>
-                                )}
+                                <span className="absolute -top-2 -right-2 bg-white text-green-600 rounded-full text-xs w-4 h-4 flex items-center justify-center font-bold">
+                                    {wishlistCount}
+                                </span>
                             </Link>
                             
                             <Link to="/cart" className="relative hover:text-white transition-colors duration-200">
                                 <BsCart2 size={20} />
-                                {cartCount > 0 && (
-                                    <span className="absolute -top-2 -right-2 bg-green-600 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
-                                        {cartCount}
-                                    </span>
-                                )}
+                                <span className="absolute -top-2 -right-2 bg-white text-green-600 rounded-full text-xs w-4 h-4 flex items-center justify-center font-bold">
+                                    {cartCount}
+                                </span>
                             </Link>
                             
                             {isLoggedIn ? (
@@ -156,8 +150,8 @@ export default function Header() {
                                         onClick={handleUserClick}
                                         className="flex items-center space-x-2 hover:text-green-200 transition-colors duration-200"
                                     >
-                                        <span className="text-sm font-medium">
-                                            Hi, {userFirstName}
+                                        <span className="text-sm font-medium uppercase">
+                                            Hi, {userFirstName.toUpperCase()}
                                         </span>
                                     </button>
                                     {showLogout && (
@@ -229,11 +223,9 @@ export default function Header() {
                         <div className="flex items-center">
                             <BsClipboardCheck className="mr-2" /> Orders
                         </div>
-                        {ordersCount > 0 && (
-                            <span className="bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                                {ordersCount}
-                            </span>
-                        )}
+                        <span className="bg-white text-green-600 rounded-full text-xs w-5 h-5 flex items-center justify-center font-bold">
+                            {ordersCount}
+                        </span>
                     </Link>
 
                     <Link
@@ -244,11 +236,9 @@ export default function Header() {
                         <div className="flex items-center">
                             <BsHeart className="mr-2" /> Wishlist
                         </div>
-                        {wishlistCount > 0 && (
-                            <span className="bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                                {wishlistCount}
-                            </span>
-                        )}
+                        <span className="bg-white text-green-600 rounded-full text-xs w-5 h-5 flex items-center justify-center font-bold">
+                            {wishlistCount}
+                        </span>
                     </Link>
 
                     <Link
@@ -259,11 +249,9 @@ export default function Header() {
                         <div className="flex items-center">
                             <BsCart2 className="mr-2" /> Cart
                         </div>
-                        {cartCount > 0 && (
-                            <span className="bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                                {cartCount}
-                            </span>
-                        )}
+                        <span className="bg-white text-green-600 rounded-full text-xs w-5 h-5 flex items-center justify-center font-bold">
+                            {cartCount}
+                        </span>
                     </Link>
 
                     {isLoggedIn ? (
@@ -271,7 +259,7 @@ export default function Header() {
                             <div className="py-2 px-2 rounded-lg bg-green-100 font-medium">
                                 <div className="flex items-center">
                                     <LuUserRound className="mr-2" /> 
-                                    Hi, {userFirstName}
+                                    <span className="uppercase">Hi, {userFirstName.toUpperCase()}</span>
                                 </div>
                             </div>
                             <button
