@@ -11,6 +11,7 @@ import {
     FiChevronLeft,
     FiChevronRight,
     FiShare2,
+    FiShoppingBag,
     FiCreditCard,
 } from "react-icons/fi";
 import Footer from '../components/Footer';
@@ -26,9 +27,12 @@ const ProductOverview = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [addingToCart, setAddingToCart] = useState(false);
+    const [wishlisted, setWishlisted] = useState(false);
+    const [showShareOptions, setShowShareOptions] = useState(false);
 
     useEffect(() => {
         fetchProduct();
+        checkWishlistStatus();
     }, [id]);
 
     const fetchProduct = async () => {
@@ -57,6 +61,124 @@ const ProductOverview = () => {
         } finally {
             setLoading(false);
         }
+    };
+
+    const checkWishlistStatus = () => {
+        const email = getCurrentUserEmail();
+        if (!email) return false;
+
+        const wishlist = JSON.parse(localStorage.getItem(`wishlist_${email}`) || '[]');
+        const isWishlisted = wishlist.some(item => item.productID === id);
+        setWishlisted(isWishlisted);
+        return isWishlisted;
+    };
+
+    const toggleWishlist = () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            toast.error('Please login to add items to wishlist');
+            navigate('/login');
+            return;
+        }
+
+        const email = getCurrentUserEmail();
+        if (!email) return;
+
+        const wishlist = JSON.parse(localStorage.getItem(`wishlist_${email}`) || '[]');
+        
+        if (wishlisted) {
+           
+            const updatedWishlist = wishlist.filter(item => item.productID !== id);
+            localStorage.setItem(`wishlist_${email}`, JSON.stringify(updatedWishlist));
+            setWishlisted(false);
+            toast.success('Removed from wishlist');
+        } else {
+            
+            const wishlistItem = {
+                productID: id,
+                name: product.name,
+                price: product.price,
+                labelledPrice: product.labelledPrice,
+                images: product.images,
+                category: product.category,
+                stock: product.stock,
+                addedAt: new Date().toISOString()
+            };
+            wishlist.push(wishlistItem);
+            localStorage.setItem(`wishlist_${email}`, JSON.stringify(wishlist));
+            setWishlisted(true);
+            toast.success('Added to wishlist');
+        }
+
+        window.dispatchEvent(new Event('cartUpdated'));
+    };
+
+    const handleShare = async () => {
+        const shareUrl = window.location.href;
+        const shareText = `Check out this amazing product: ${product.name}`;
+
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: product.name,
+                    text: shareText,
+                    url: shareUrl,
+                });
+                toast.success('Product shared successfully!');
+            } catch (error) {
+                if (error.name !== 'AbortError') {
+                   
+                    copyToClipboard(shareUrl);
+                }
+            }
+        } else {
+        
+            copyToClipboard(shareUrl);
+        }
+        setShowShareOptions(false);
+    };
+
+    const copyToClipboard = (text) => {
+        navigator.clipboard.writeText(text).then(() => {
+            toast.success('Product link copied to clipboard!');
+        }).catch(() => {
+            
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            toast.success('Product link copied to clipboard!');
+        });
+    };
+
+    const shareOnSocialMedia = (platform) => {
+        const shareUrl = window.location.href;
+        const shareText = `Check out this amazing product: ${product.name}`;
+        
+        let url = '';
+        
+        switch (platform) {
+            case 'facebook':
+                url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+                break;
+            case 'twitter':
+                url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+                break;
+            case 'whatsapp':
+                url = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`;
+                break;
+            case 'linkedin':
+                url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+                break;
+            default:
+                return;
+        }
+        
+        window.open(url, '_blank', 'width=600,height=400');
+        setShowShareOptions(false);
+        toast.success(`Sharing on ${platform}`);
     };
 
     const handleAddToCart = async () => {
@@ -129,10 +251,6 @@ const ProductOverview = () => {
         } finally {
             setAddingToCart(false);
         }
-    };
-
-    const toggleWishlist = () => {
-        console.log("Toggle wishlist:", product?.productID);
     };
 
     const handleQuantityChange = (change) => {
@@ -215,8 +333,55 @@ const ProductOverview = () => {
 
     return (
         <div className="min-h-screen bg-white">
+            
+            {showShareOptions && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-lg p-6 max-w-sm w-full mx-4">
+                        <h3 className="text-lg font-bold text-gray-900 mb-4">Share Product</h3>
+                        <div className="grid grid-cols-2 gap-3 mb-4">
+                            <button
+                                onClick={() => shareOnSocialMedia('facebook')}
+                                className="flex items-center justify-center gap-2 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                            >
+                                <span className="text-sm font-medium">Facebook</span>
+                            </button>
+                            <button
+                                onClick={() => shareOnSocialMedia('twitter')}
+                                className="flex items-center justify-center gap-2 p-3 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition-colors"
+                            >
+                                <span className="text-sm font-medium">Twitter</span>
+                            </button>
+                            <button
+                                onClick={() => shareOnSocialMedia('whatsapp')}
+                                className="flex items-center justify-center gap-2 p-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                            >
+                                <span className="text-sm font-medium">WhatsApp</span>
+                            </button>
+                            <button
+                                onClick={() => shareOnSocialMedia('linkedin')}
+                                className="flex items-center justify-center gap-2 p-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
+                            >
+                                <span className="text-sm font-medium">LinkedIn</span>
+                            </button>
+                        </div>
+                        <button
+                            onClick={handleShare}
+                            className="w-full p-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors mb-2"
+                        >
+                            Copy Link
+                        </button>
+                        <button
+                            onClick={() => setShowShareOptions(false)}
+                            className="w-full p-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            )}
+
             <div className="bg-gray-50 border-b border-gray-200">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3">
+                <div className="max-w-9xl mx-auto px-4 sm:px-6 py-3">
                     <nav className="flex items-center gap-2 text-sm text-gray-600">
                         <Link to="/" className="hover:text-green-600 transition-colors">Home</Link>
                         <FiChevronRight className="w-4 h-4" />
@@ -334,18 +499,25 @@ const ProductOverview = () => {
                                         : 'bg-gray-300 cursor-not-allowed text-gray-500'
                                 } ${addingToCart ? 'opacity-50 cursor-not-allowed' : ''}`}
                             >
-                                <FiCreditCard className="w-4 h-4" />
+                                <FiShoppingBag className="w-4 h-4" />
                                 {addingToCart ? 'Adding...' : 'Buy Now'}
                             </button>
 
                             <button
                                 onClick={toggleWishlist}
-                                className="p-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                                className={`p-3 border rounded-lg transition-colors ${
+                                    wishlisted 
+                                        ? 'bg-green-600 border-green-600 text-white hover:bg-green-700' 
+                                        : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                                }`}
                             >
-                                <FiHeart className="w-4 h-4" />
+                                <FiHeart className={`w-4 h-4 ${wishlisted ? 'fill-current' : ''}`} />
                             </button>
                             
-                            <button className="p-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                            <button 
+                                onClick={() => setShowShareOptions(true)}
+                                className="p-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                            >
                                 <FiShare2 className="w-4 h-4" />
                             </button>
                         </div>
