@@ -50,39 +50,7 @@ export default function HomeView() {
                 <Banner />
             </section>
 
-            <section className="bg-white py-14 border-b border-gray-100">
-                <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div className="text-center group hover:transform hover:-translate-y-1 transition-all duration-300">
-                            <div className="w-18 h-18 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-100 transition-colors">
-                                <FaLeaf className="w-8 h-8 text-green-600" />
-                            </div>
-                            <p className="text-md font-medium text-gray-700">100% Natural organic ingredients</p>
-                        </div>
-                        
-                        <div className="text-center group hover:transform hover:-translate-y-1 transition-all duration-300">
-                            <div className="w-18 h-18 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-100 transition-colors">
-                                <FaRecycle className="w-8 h-8 text-green-600" />
-                            </div>
-                            <p className="text-md font-medium text-gray-700">Eco-friendly sustainable packaging</p>
-                        </div>
-                        
-                        <div className="text-center group hover:transform hover:-translate-y-1 transition-all duration-300">
-                            <div className="w-18 h-18 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-100 transition-colors">
-                                <FaHeart className="w-8 h-8 text-green-600" />
-                            </div>
-                            <p className="text-md font-medium text-gray-700">Cruelty-free & dermatologist tested</p>
-                        </div>
-                        
-                        <div className="text-center group hover:transform hover:-translate-y-1 transition-all duration-300">
-                            <div className="w-18 h-18 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-100 transition-colors">
-                                <FaShieldAlt className="w-8 h-8 text-green-600" />
-                            </div>
-                            <p className="text-md font-medium text-gray-700">Visible results guaranteed</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
            
             <section className="bg-white">
                 <HomeShowcase />
@@ -137,17 +105,17 @@ export default function HomeView() {
                         </div>
                     )}
 
-                    <div className="text-center mt-12">
-                        <Link
-                            to="/product"
-                            className="inline-flex items-center gap-2 bg-transparent border-green-700 
-                             text-green-700 font-semibold py-3 px-8 rounded-lg transition-all duration-300 
-                             shadow-md hover:shadow-lg hover:transform hover:-translate-y-0.5"
-                        >
-                          VIEW ALL PRODUCTS
-                           
-                        </Link>
-                    </div>
+                   <div className="text-center mt-12">
+    <Link
+        to="/product"
+        className="inline-flex items-center gap-2 bg-transparent border-2 border-green-700 
+         text-green-700 font-semibold py-3 px-8 rounded-lg transition-all duration-300 
+         shadow-md hover:shadow-lg hover:transform hover:-translate-y-0.5
+         hover:bg-green-600 hover:text-white"
+    >
+        VIEW ALL PRODUCTS
+    </Link>
+</div>
                 </div>
             </section>
 
@@ -199,17 +167,17 @@ export default function HomeView() {
                             <p className="text-gray-600">We're preparing amazing products for you.</p>
                         </div>
                     )}
-                     <div className="text-center mt-12">
-                        <Link
-                            to="/product"
-                            className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800
-                             text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 
-                             shadow-md hover:shadow-lg hover:transform hover:-translate-y-0.5"
-                        >
-                          VIEW ALL PRODUCTS
-                           
-                        </Link>
-                    </div>
+                                    <div className="text-center mt-12">
+    <Link
+        to="/product"
+        className="inline-flex items-center gap-2 bg-transparent border-2 border-green-700 
+         text-green-700 font-semibold py-3 px-8 rounded-lg transition-all duration-300 
+         shadow-md hover:shadow-lg hover:transform hover:-translate-y-0.5
+         hover:bg-green-600 hover:text-white"
+    >
+        VIEW ALL PRODUCTS
+    </Link>
+</div>
                 </div>
             </section>
 
@@ -217,10 +185,10 @@ export default function HomeView() {
                 <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="text-left">
-                            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                            <h2 className="text-4xl font-bold text-gray-700 mb-6">
                                 Transform Your Skin with Nature's Finest
                             </h2>
-                            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                                 Experience the power of pure, organic ingredients carefully selected for their 
                                 natural benefits. Our products are crafted to deliver visible results while 
                                 respecting your skin and the environment.
@@ -263,6 +231,39 @@ export default function HomeView() {
                 </div>
             </section>
 
+<section className="bg-white py-14 border-b border-gray-100">
+                <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div className="text-center group hover:transform hover:-translate-y-1 transition-all duration-300">
+                            <div className="w-18 h-18 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-100 transition-colors">
+                                <FaLeaf className="w-8 h-8 text-green-600" />
+                            </div>
+                            <p className="text-md font-medium text-gray-700">100% Natural organic ingredients</p>
+                        </div>
+                        
+                        <div className="text-center group hover:transform hover:-translate-y-1 transition-all duration-300">
+                            <div className="w-18 h-18 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-100 transition-colors">
+                                <FaRecycle className="w-8 h-8 text-green-600" />
+                            </div>
+                            <p className="text-md font-medium text-gray-700">Eco-friendly sustainable packaging</p>
+                        </div>
+                        
+                        <div className="text-center group hover:transform hover:-translate-y-1 transition-all duration-300">
+                            <div className="w-18 h-18 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-100 transition-colors">
+                                <FaHeart className="w-8 h-8 text-green-600" />
+                            </div>
+                            <p className="text-md font-medium text-gray-700">Cruelty-free & dermatologist tested</p>
+                        </div>
+                        
+                        <div className="text-center group hover:transform hover:-translate-y-1 transition-all duration-300">
+                            <div className="w-18 h-18 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-100 transition-colors">
+                                <FaShieldAlt className="w-8 h-8 text-green-600" />
+                            </div>
+                            <p className="text-md font-medium text-gray-700">Visible results guaranteed</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section className="bg-gray-50 py-16">
                 <InstagramFeed />
