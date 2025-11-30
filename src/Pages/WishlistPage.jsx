@@ -127,8 +127,8 @@ const WishlistPage = () => {
 
                 {isWishlistEmpty ? (
                     <div className="bg-white rounded-xl border border-gray-200 p-12 max-w-5xl mx-auto text-center">
-                        <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <FiHeart className="w-10 h-10 text-gray-400" />
+                        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <FiHeart className="w-8 h-8 text-green-600" />
                         </div>
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">Your wishlist is empty</h2>
                         <p className="text-gray-600 mb-8 max-w-md mx-auto">
@@ -137,7 +137,7 @@ const WishlistPage = () => {
                         <div className="flex gap-4 justify-center">
                             <button
                                 onClick={() => navigate('/product')}
-                                className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold"
+                                className="px-6 py-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition-colors font-semibold"
                             >
                                 Browse Products
                             </button>
@@ -146,25 +146,7 @@ const WishlistPage = () => {
                     </div>
                 ) : (
                     <>
-                        <div className="flex justify-between items-center mb-6">
-                            <p className="text-gray-600">
-                                {wishlistItems.length} {wishlistItems.length === 1 ? 'item' : 'items'} in wishlist
-                            </p>
-                            <div className="flex gap-3">
-                                <button
-                                    onClick={moveAllToCart}
-                                    className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
-                                >
-                                    Add All to Cart
-                                </button>
-                                <button
-                                    onClick={clearWishlist}
-                                    className="px-4 py-2 border border-red-300 text-red-600 rounded-lg hover:bg-red-50 transition-colors text-sm font-medium"
-                                >
-                                    Clear Wishlist
-                                </button>
-                            </div>
-                        </div>
+                        
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                             {wishlistItems.map((item) => (
