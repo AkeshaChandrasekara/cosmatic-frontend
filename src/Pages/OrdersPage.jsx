@@ -83,9 +83,9 @@ const OrdersPage = () => {
                     </div>
 
                     {orders.length === 0 ? (
-                        <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
-                            <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <FiPackage className="w-8 h-8 text-gray-400" />
+                         <div className="bg-white rounded-xl border border-gray-200 p-12 max-w-5xl mx-auto text-center">
+                            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <FiPackage className="w-8 h-8 text-green-600" />
                             </div>
                             <h2 className="text-2xl font-bold text-gray-900 mb-3">No Orders Yet</h2>
                             <p className="text-gray-600 mb-8 max-w-md mx-auto">
@@ -94,18 +94,12 @@ const OrdersPage = () => {
                             <div className="flex gap-4 justify-center">
                                 <Link
                                     to="/product"
-                                    className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold"
+                                    className="px-6 py-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition-colors font-semibold"
                                 >
-                                    <FiShoppingBag className="w-4 h-4 inline mr-2" />
+                                  
                                     Start Shopping
                                 </Link>
-                                <Link
-                                    to="/"
-                                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold"
-                                >
-                                    <FiHome className="w-4 h-4 inline mr-2" />
-                                    Go to Home
-                                </Link>
+                               
                             </div>
                         </div>
                     ) : (
