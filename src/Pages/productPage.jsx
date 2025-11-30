@@ -154,7 +154,7 @@ export default function ProductPage() {
             <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
-                        <h1 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                        <h1 className="text-lg font-bold text-gray-700 flex items-center gap-2">
                             <FiGrid className="w-5 h-5 text-green-600" />
                             Organic Cosmetics Collection
                         </h1>
