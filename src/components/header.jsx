@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LuUserRound } from "react-icons/lu";
 import { BsCart2, BsClipboardCheck, BsHeart } from "react-icons/bs";
 import { FaTimes } from "react-icons/fa";
@@ -15,6 +15,7 @@ export default function Header() {
     const [userFirstName, setUserFirstName] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const logoutRef = useRef(null);
+    const navigate = useNavigate();
 
     const sections = [
         { name: "Home", path: "/" },
@@ -85,6 +86,7 @@ export default function Header() {
         setShowLogout(false);
         setIsOpen(false);
         window.dispatchEvent(new Event('cartUpdated'));
+        navigate('/login');
     };
 
     const handleUserClick = (e) => {
