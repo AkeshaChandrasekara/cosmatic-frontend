@@ -235,8 +235,8 @@ const CartPage = () => {
 
                 {isCartEmpty ? (
                  <div className="bg-white rounded-xl border border-gray-200 p-12 max-w-5xl mx-auto text-center">
-                        <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <FiShoppingCart className="w-10 h-10 text-gray-400" />
+                        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <FiShoppingCart className="w-8 h-8 text-green-600" />
                         </div>
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">Your cart is empty</h2>
                         <p className="text-gray-600 mb-8 max-w-md mx-auto">
@@ -245,7 +245,7 @@ const CartPage = () => {
                         <div className="flex gap-4 justify-center">
                             <button
                                 onClick={() => navigate('/product')}
-                                className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold"
+                                className="px-6 py-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition-colors font-semibold"
                             >
                                 Continue Shopping
                             </button>
