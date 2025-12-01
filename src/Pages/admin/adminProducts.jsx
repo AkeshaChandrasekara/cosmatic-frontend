@@ -125,8 +125,8 @@ export default function AdminProducts() {
                             </span>
                         </div>
 
-                        {/* Search Bar */}
-                        <div className="p-5 border-b border-gray-200">
+                        {/* Search Bar with Plus Button */}
+                        <div className="flex items-center justify-between p-5 border-b border-gray-200">
                             <input
                                 type="text"
                                 placeholder="Search by name, description, or category..."
@@ -134,6 +134,15 @@ export default function AdminProducts() {
                                 onChange={(e) => setSearch(e.target.value)}
                                 className="w-1/2 px-4 py-2 bg-white border border-gray-300 text-sm text-gray-800 rounded-lg focus:ring-2 focus:ring-green-400 outline-none placeholder-gray-500 transition"
                             />
+                            <button
+                                onClick={() => setIsAddOpen(true)}
+                                aria-label="Add New Product"
+                                title="Add New Product"
+                                className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300 shadow-md hover:shadow-lg"
+                            >
+                                <FaPlusCircle size={20} />
+                                <span className="text-sm font-medium">Add Product</span>
+                            </button>
                         </div>
 
                         {/* Products Table */}
@@ -207,16 +216,6 @@ export default function AdminProducts() {
                     </div>
                 </div>
             </div>
-
-            {/* Floating Add Button */}
-            <button
-                onClick={() => setIsAddOpen(true)}
-                aria-label="Add New Product"
-                title="Add New Product"
-                className="fixed right-8 bottom-8 p-4 rounded-full bg-green-500 text-white shadow-xl hover:bg-green-600 transition duration-300 transform hover:scale-110 ring-4 ring-green-300/50"
-            >
-                <FaPlusCircle size={24} />
-            </button>
 
             <AdminAddProducts
                 isOpen={isAddOpen}
