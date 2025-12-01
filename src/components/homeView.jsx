@@ -41,7 +41,7 @@ export default function HomeView() {
 
     const trendingProducts = products.slice(0, 4);
     
-    const collectionProducts = products.slice(4, 8);
+    const collectionProducts = products.slice(8, 12);
 
     return (
         <div className="bg-white">
