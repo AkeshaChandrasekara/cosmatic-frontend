@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "../components/productCard";
-import Footer from "../components/Footer";
+import Footer from "../components/footer";
 import { 
     FiStar, 
     FiUser, 

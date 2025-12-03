@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FiHeart, FiArrowLeft } from 'react-icons/fi';
 import { getCurrentUserEmail } from '../../utils/cartUtils';
 import toast from 'react-hot-toast';
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 import ProductCard from '../components/productCard';
 
 const WishlistPage = () => {

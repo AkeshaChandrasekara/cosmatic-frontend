@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FiCheckCircle } from 'react-icons/fi';
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 import toast from 'react-hot-toast';
 
 const CheckoutPage = () => {

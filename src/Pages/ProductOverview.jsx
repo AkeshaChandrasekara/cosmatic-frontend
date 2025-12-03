@@ -14,7 +14,7 @@ import {
     FiShoppingBag,
     FiCreditCard,
 } from "react-icons/fi";
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 import { addToCart, getCurrentUserEmail } from '../../utils/cartUtils';
 import toast from 'react-hot-toast';
 

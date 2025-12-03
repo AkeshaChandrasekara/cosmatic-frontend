@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { FiCheckCircle, FiShoppingBag, FiPackage, FiTruck } from 'react-icons/fi';
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 
 const OrderConfirmation = () => {
     const location = useLocation();

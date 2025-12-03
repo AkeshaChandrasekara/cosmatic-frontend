@@ -1,6 +1,6 @@
 import { FaLeaf, FaRecycle, FaHeart, FaAward, FaUsers, FaGlobeAmericas } from "react-icons/fa";
 //import Footer from '../components/Footer';
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 
 export default function AboutView() {
     return (

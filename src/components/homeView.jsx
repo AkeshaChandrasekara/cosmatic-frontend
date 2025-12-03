@@ -1,5 +1,5 @@
 import { FaWhatsapp, FaFacebookMessenger, FaTelegramPlane, FaStar, FaArrowRight, FaLeaf, FaRecycle, FaHeart, FaShieldAlt } from "react-icons/fa";
-import Footer from "./Footer";
+import Footer from "./footer";
 import Banner from "./banner";
 import HomeShowcase from "./homeShowcase";
 import InstagramFeed from "./instagramFeed";
