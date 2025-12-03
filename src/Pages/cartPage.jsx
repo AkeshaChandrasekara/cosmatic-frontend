@@ -6,8 +6,8 @@ import {
     FiPlus, 
     FiMinus
 } from "react-icons/fi";
-//import Footer from '../components/Footer';
-import Footer from '../../../components/Footer';
+import Footer from '../components/Footer';
+//import Footer from '../../components/Footer';
 import { 
     loadCart, 
     updateCartItemQuantity, 
