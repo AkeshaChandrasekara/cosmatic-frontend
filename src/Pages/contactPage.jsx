@@ -1,5 +1,6 @@
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaTwitter, FaLeaf, FaHeadset } from "react-icons/fa";
-import Footer from "../components/Footer";
+//import Footer from "../components/Footer";
+import Footer from '../../../components/Footer';
 
 export default function ContactPage() {
     return (
