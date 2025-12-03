@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiPackage, FiShoppingBag, FiHome, FiCalendar, FiDollarSign, FiTruck, FiUser, FiCheckCircle, FiTruck as FiShipped, FiXCircle, FiClock } from 'react-icons/fi';
-import Footer from '../components/Footer';
+//import Footer from '../components/Footer';
+import Footer from '../../../components/Footer';
 import { getUserOrders, getCurrentUserEmail } from '../../utils/cartUtils';
 
 const OrdersPage = () => {
