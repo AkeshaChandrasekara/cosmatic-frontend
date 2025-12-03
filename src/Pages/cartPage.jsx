@@ -8,6 +8,7 @@ import {
 } from "react-icons/fi";
 import Footer from '../components/Footer';
 //import Footer from '../../components/Footer';
+//import Footer from '../components/Footer.jsx';
 import { 
     loadCart, 
     updateCartItemQuantity, 
